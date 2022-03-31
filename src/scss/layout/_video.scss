@@ -1,0 +1,57 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.video{
+    position: relative;
+    max-height: 70rem;
+    min-height: 50rem; //evita que el video se haga pequeño en pantallas pequeñas
+    overflow: hidden; //evita que el overlay salga del max height
+
+    .overlay{
+        position: absolute;
+
+        //color del gradient generado
+        background: rgb(156,8,192);
+        background: linear-gradient(270deg, rgba(156,8,192,0.5) 0%, rgba(224,5,68,0.3338469176733193) 100%);
+
+        //el overlay toma el alto y ancho del 100% del video
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    
+    video{
+        width: auto;
+        display: block; //toma todo el espacio hacia abajo
+
+        //LA ETIQUETA VIDEO ES LA QUE TOMA EL 100% DE ANCHO de pantalla
+
+        @include m.desktop {
+            width: 100%
+        }
+    }
+}
+
+
+
+.contenido-video{
+    z-index: 1; //cambia el orden en el eje Z de los elementos
+    h2{
+        color: v.$blanco;
+        font-size: 7rem;
+        margin: 0;
+    }
+
+    p{
+        background-color: v.$rosa;
+        display: inline-block;
+        padding: 1rem 2rem;
+        color: v.$blanco;
+        font-weight: 700;
+        font-size: 2.4rem;
+        margin: 0;
+    }
+}
